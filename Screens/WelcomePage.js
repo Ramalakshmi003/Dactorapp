@@ -1,7 +1,8 @@
 import React from 'react'
 import {Text, View, StyleSheet, TouchableOpacity} from 'react-native'
-
-const WelcomePage = ({navigation}) => {
+import {useNavigation} from '@react-navigation/native'
+const WelcomePage = () => {
+    const navigation = useNavigation();
     return(
         <View style = {styles.container}>
             <View style = {styles.TopSection}>

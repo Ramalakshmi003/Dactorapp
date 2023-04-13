@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Text, View, StyleSheet, Image, TouchableOpacity, TextInput, Switch } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-
-const SignUpPage = ({ navigation }) => {
-
+const SignUpPage = (onFocus = () => {}) => {
+    const navigation = useNavigation();
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
 
@@ -71,6 +71,13 @@ const SignUpPage = ({ navigation }) => {
                                 style={{ flex: 1 }}
                                 placeholder="Enter Your password Here"
                                 underlineColorAndroid="transparent"
+                            />
+                            <Image
+                                source={{
+                                    uri:
+                                        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_Ri4yMpf0BSfjD8Cmk7nZKYzVmVGu1ps_Ww&usqp=CAU"
+                                }}
+                                style={styles.imageStyle}
                             />
                         </View>
                     </View>

@@ -46,7 +46,8 @@ const DoctorsListPage = (props) => {
                                         <View style={StyleSheet.midpart}>
                                             <Text style={styles.boxtext1}>{item.doctorName}</Text>
                                             <Text style={styles.boxtext2}>{item.role}</Text>
-                                            <Image style={styles.starRating} source={item.starRating} />
+                                            <TouchableOpacity style = {{backgroundColor : 'orange', borderRadius : 10, padding : 5, top: 10}} onPress={() => navigation.navigate('BookingApp')}><Text style = {{fontSize : 16, fontWeight : 600, color : 'white'}}> Book Your Appoiment </Text></TouchableOpacity>
+                                            {/* <Image style={styles.starRating} source={item.starRating} /> */}
                                         </View>
                                         <View>
                                             <TouchableOpacity onPress={() => {

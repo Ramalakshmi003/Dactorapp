@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import { Text, Dimensions, View, Image, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native';
+import {useNavigation} from '@react-navigation/native'
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-
-const HomePage = ({ navigation }) => {
+const HomePage = () => {
+    const navigation = useNavigation();
     return (
         // total container
         <View style={styles.con}>
@@ -12,7 +14,9 @@ const HomePage = ({ navigation }) => {
                 <View style={styles.topSection}>
                     {/* admin icon, and the texts */}
                     <View style={styles.topSection1}>
+                        <TouchableOpacity onPress={() => navigation.navigate("logOut")}>
                         <Image source={{ uri: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO1UUwmhrsitr2YBIznRi5LIgCs2Ey7w5FDQ&usqp=CAU" }} style={styles.adminImg} />
+                        </TouchableOpacity>
                         <View style={{ marginLeft: 10 }}>
                             <Text style={{ fontSize: 14, color: '#ff8533' }}>Welcome</Text>
                             <Text style={{ fontSize: 18, color: '#000080' }}>Hey, Samantha!</Text>
@@ -20,7 +24,12 @@ const HomePage = ({ navigation }) => {
                     </View>
                     {/* heart bell side navicon */}
                     <View style={styles.topSection2}>
+
+                        {/* unredBadge */}
                         <TouchableOpacity onPress={() => navigation.navigate("WishList")}>
+                            <View style = {styles.unreadBadge}>
+                                <Text style = {styles.unreadBadgeText}>11</Text>
+                            </View>
                             <Image style={styles.img} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtx92bUQQeCL28rwlxQ8mq2hETStgc-nnt5g&usqp=CAU' }} />
                         </TouchableOpacity>
                         <TouchableOpacity>
@@ -41,36 +50,37 @@ const HomePage = ({ navigation }) => {
                 </View>
             </View>
             {/* bottom whole section after filter card */}
-            <ScrollView contentContainer Style={{ flexGrow: 1 }}>
-                {/* left to right scroll cards by map  */}
-                {/* straight horizontal cards */}
-                <View style={styles.horizontalCards}>
-                    <TouchableOpacity onPress={() => navigation.navigate("DoctorsList")}>
-                        <View style={styles.card}>
-                            <Image style={styles.cardImage} source={{ uri: 'https://cdn.pixabay.com/photo/2016/03/31/20/12/doctor-1295581_960_720.png' }} />
-                            <Text style={styles.cardText}>Doctor</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <View style={styles.card}>
-                            <Image style={styles.cardImage} source={{ uri: 'https://media.istockphoto.com/id/1182012394/vector/calendar-schedule-and-clock-icon-time-appointment-reminder-date-concept-flat-organizer.jpg?b=1&s=170667a&w=0&k=20&c=H8kVyDNudyiBNCr1RPvdMKxlMgQ-tS3SEVsSXgvl8AU=' }} />
-                            <Text style={styles.cardText}>Appointment</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <View style={styles.card}>
-                            <Image style={styles.cardImage} source={{ uri: 'https://media.istockphoto.com/id/1338679502/vector/yellow-business-folder-3d-icon-volumetric-plastic-file-with-documentation.jpg?b=1&s=170667a&w=0&k=20&c=XTTuhJvBabUAwXFURVOPp2OPPRia6DIB4Gtxy4n7vC4=' }} />
-                            <Text style={styles.cardText}>Prescription</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity>
-                        <View style={styles.card}>
-                            <Image style={styles.cardImage} source={{ uri: 'https://media.istockphoto.com/id/1164354151/vector/pills-and-tablets.jpg?b=1&s=170667a&w=0&k=20&c=15NL0WZAXqZ674aiAB1AKnbzfLBioy8BcivReolppUo=' }} />
-                            <Text style={styles.cardText}>Medicine</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-                {/* topDoctor section */}
+
+            {/* left to right scroll cards by map  */}
+            {/* straight horizontal cards */}
+            <View style={styles.horizontalCards}>
+                <TouchableOpacity onPress={() => navigation.navigate("DoctorsList")}>
+                    <View style={styles.card}>
+                        <Image style={styles.cardImage} source={{ uri: 'https://cdn.pixabay.com/photo/2016/03/31/20/12/doctor-1295581_960_720.png' }} />
+                        <Text style={styles.cardText}>Doctor</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <View style={styles.card}>
+                        <Image style={styles.cardImage} source={{ uri: 'https://media.istockphoto.com/id/1182012394/vector/calendar-schedule-and-clock-icon-time-appointment-reminder-date-concept-flat-organizer.jpg?b=1&s=170667a&w=0&k=20&c=H8kVyDNudyiBNCr1RPvdMKxlMgQ-tS3SEVsSXgvl8AU=' }} />
+                        <Text style={styles.cardText}>Appointment</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <View style={styles.card}>
+                        <Image style={styles.cardImage} source={{ uri: 'https://media.istockphoto.com/id/1338679502/vector/yellow-business-folder-3d-icon-volumetric-plastic-file-with-documentation.jpg?b=1&s=170667a&w=0&k=20&c=XTTuhJvBabUAwXFURVOPp2OPPRia6DIB4Gtxy4n7vC4=' }} />
+                        <Text style={styles.cardText}>Prescription</Text>
+                    </View>
+                </TouchableOpacity>
+                <TouchableOpacity>
+                    <View style={styles.card}>
+                        <Image style={styles.cardImage} source={{ uri: 'https://media.istockphoto.com/id/1164354151/vector/pills-and-tablets.jpg?b=1&s=170667a&w=0&k=20&c=15NL0WZAXqZ674aiAB1AKnbzfLBioy8BcivReolppUo=' }} />
+                        <Text style={styles.cardText}>Medicine</Text>
+                    </View>
+                </TouchableOpacity>
+            </View>
+            {/* topDoctor section */}
+            <ScrollView>
                 <View style={styles.topDoctorSection}>
                     <Text style={styles.headingTopDoctor}>Top Doctors</Text>
                     <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center' }}>
@@ -123,6 +133,7 @@ const HomePage = ({ navigation }) => {
                     </View>
                 </View>
             </ScrollView>
+
         </View>
     );
 }
@@ -276,6 +287,25 @@ const styles = StyleSheet.create({
         color: '#000',
         textAlign: 'center'
     },
+
+    unreadBadge : {
+        backgroundColor : '#FF3250',
+        position : 'absolute',
+        left : 28,
+        bottom : 27,
+        height : 18,
+        width : 25,
+        borderRadius : 25,
+        alignItems : 'center',
+        justifyContent : 'center',
+        zIndex :100,
+    },
+
+    unreadBadgeText : {
+        color : 'white',
+        fontWeight : 600,
+    },
+    
 
 });
 
