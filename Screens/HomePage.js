@@ -1,10 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Text, Dimensions, View, Image, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import {useNavigation} from '@react-navigation/native'
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const HomePage = () => {
     const navigation = useNavigation();
+
+    useEffect(() => {
+        getData();
+    }, []);
+
+    const [name, setName] = useState('');
+    const getData = async () => {
+        try {
+            await AsyncStorage.getItem('UserName')
+                .then(val => {
+                    if (val != null) {
+                        setName(val);
+                    }
+                })
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+
     return (
         // total container
         <View style={styles.con}>
@@ -19,7 +39,7 @@ const HomePage = () => {
                         </TouchableOpacity>
                         <View style={{ marginLeft: 10 }}>
                             <Text style={{ fontSize: 14, color: '#ff8533' }}>Welcome</Text>
-                            <Text style={{ fontSize: 18, color: '#000080' }}>Hey, Samantha!</Text>
+                            <Text style={{ fontSize: 18, color: '#000080' }}>Hey, {name} !</Text>
                         </View>
                     </View>
                     {/* heart bell side navicon */}

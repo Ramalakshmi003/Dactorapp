@@ -6,7 +6,10 @@ const WelcomePage = () => {
     return(
         <View style = {styles.container}>
             <View style = {styles.TopSection}>
-                <Text style = {styles.logo}>D</Text>
+                <View style = {{height : 90, width : 90, borderRadius : 35, borderWidth : 6, borderColor : 'blue'}}>
+                    <Text style = {styles.logo}>D</Text>
+                </View>
+                
                 <View style = {styles.TopSection1}>
                     <Text style = {styles.text1}>Dactorapp</Text>
                     <Text style = {styles.text2}>Welcome to Dactorapp</Text>
@@ -52,13 +55,13 @@ const styles = StyleSheet.create({
 
     logo : {
         color : 'blue',
-        borderWidth : 5,
-        borderColor : 'blue',
-        padding : 25,
+        // borderWidth : 5,
+        // borderColor : 'blue',
+        padding : 10,
         fontSize : 45,
         fontWeight : 800,
-        borderRadius : 100,
-        margin : 5,
+        // borderRadius : 100,
+        // margin : 5,
         textAlign : 'center',
     },
     text1 : {

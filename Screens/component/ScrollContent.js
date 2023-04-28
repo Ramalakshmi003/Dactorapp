@@ -84,8 +84,8 @@ export default function ScrollContent() {
             <View>
                 <Text style={styles.PaymentHead}>Payment Methods</Text>
                 <View style={styles.cardInput}>
-                    <Text style={{ fontSize: 16, fontWeight: 500 }}>**** **** **** 0000</Text>
-                    <Image style={{ height: 20, width: 20 }} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWeSAKNqTYUl0rtTnUMJ0uJPDs50cRJlkW3w&usqp=CAU' }} />
+                    <Text style={{ fontSize: 16, fontWeight: 500, left : 20 }}>**** **** **** 0000</Text>
+                    <Image style={{ height: 20, width: 20, right : 20 }} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQWeSAKNqTYUl0rtTnUMJ0uJPDs50cRJlkW3w&usqp=CAU' }} />
                 </View>
                 <TouchableOpacity style = {{margin : 10}}>
                     <Text style={styles.textblue}>Add a new card</Text>
@@ -123,21 +123,21 @@ const styles = StyleSheet.create({
         borderBottomWidth: 3,
         borderColor: "#ccc",
         borderRadius: 5,
-        overflow: "hidden",
+        // overflow: "hidden",
         marginTop : 10
     },
 
     row: {
         flexDirection: "row",
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
+        // justifyContent: 'flex-start',
+        // alignItems: 'flex-start',
 
     },
 
     row1: {
         flexDirection: "row",
-        justifyContent: 'flex-start',
-        alignItems: 'flex-start',
+        // justifyContent: 'flex-start',
+        // alignItems: 'flex-start',
         borderBottomWidth: 1,
         borderColor: "#ccc",
     },
@@ -145,8 +145,8 @@ const styles = StyleSheet.create({
     cell: {
         flex: 1,
         padding: 10,
-        alignItems: 'flex-start',
-        justifyContent: 'flex-start',
+        // alignItems: 'flex-start',
+        // justifyContent: 'flex-start',
         borderRightWidth: 1,
         borderRightColor: "#ccc",
         left: 30
@@ -159,22 +159,22 @@ const styles = StyleSheet.create({
     },
 
     textLeft: {
-        justifyContent: 'flex-start',
-        alignItems: "flex-start",
+        // justifyContent: 'flex-start',
+        // alignItems: "flex-start",
         color: 'black',
         fontWeight: 400,
     },
 
     textLeft1: {
-        justifyContent: 'flex-start',
-        alignItems: "flex-start",
+        // justifyContent: 'flex-start',
+        // alignItems: "flex-start",
         color: '#999999',
         fontWeight: 400,
     },
 
     textLeft2: {
-        justifyContent: 'flex-start',
-        alignItems: "flex-start",
+        // justifyContent: 'flex-start',
+        // alignItems: "flex-start",
         color: 'black',
         fontWeight: 700,
     },
@@ -198,7 +198,7 @@ const styles = StyleSheet.create({
         width: 370,
         borderRadius: 10,
         flexDirection: 'row',
-        justifyContent: 'space-around',
+        justifyContent: 'space-between',
         alignItems: 'center',
         marginTop : 15
     },

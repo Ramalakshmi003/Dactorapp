@@ -1,11 +1,28 @@
 import React, { useState } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity, TextInput, Switch } from 'react-native';
+import { Text, View, StyleSheet, Image,Alert, TouchableOpacity, TextInput, Switch } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignUpPage = (onFocus = () => {}) => {
     const navigation = useNavigation();
+
     const [isEnabled, setIsEnabled] = useState(false);
     const toggleSwitch = () => setIsEnabled(previousState => !previousState);
+
+    const [name, setName] = useState('');
+
+    const setData = async () => {
+        if(name.length == 0){
+            Alert.alert('Warning..! Enter the name');
+        }else{
+            try{
+                await AsyncStorage.setItem('UserName', name);
+                navigation.navigate("Passcode");
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
 
     return (
         <View style={styles.con}>
@@ -54,6 +71,7 @@ const SignUpPage = (onFocus = () => {}) => {
                                 style={{ flex: 1 }}
                                 placeholder="Enter Your Name Here"
                                 underlineColorAndroid="transparent"
+                                onChangeText={(val) => setName(val)}
                             />
                         </View>
                     </View>
@@ -96,7 +114,7 @@ const SignUpPage = (onFocus = () => {}) => {
                 </View>
                 <View style={styles.btn}>
                     <View>
-                        <TouchableOpacity onPress={() => navigation.navigate("Home")}><Text style={styles.loginBtn}>Create Account</Text></TouchableOpacity>
+                        <TouchableOpacity onPress={setData}><Text style={styles.loginBtn}>Create Account</Text></TouchableOpacity>
                     </View>
                 </View>
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 25, }}>

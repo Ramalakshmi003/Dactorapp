@@ -14,15 +14,16 @@ export default function BookingAppPage() {
             <View>
                 <Modal animationType="slide"
                     transparent={true}
-                    visible={modalVisible}>
-                    <View style={{ backgroundColor: 'black', height: '100%', width: '100%', opacity: 0.7, flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' }}>
+                    visible={modalVisible}
+                        onRequestClose={() => setModalVisible(false) }>
+                    <View style={{ backgroundColor: 'rgba(0, 0, 0, 0.5)', height: '100%', width: '100%', flexDirection: 'column', justifyContent: 'flex-end', alignItems: 'center' }}>
                         {/* <Text>BookingModalScreen</Text> */}
                         <View style={styles.card}>
                             <View style={styles.bar}></View>
                             <Image style={styles.tick} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSF1TDiqcTHeWPmgsvxN8xyY_JWDPSdPaSvuQ&usqp=CAU' }} />
                             <Text style={styles.txt}>Booking confirmed..!</Text>
                             <View>
-                                <TouchableOpacity onPress={() => navigation.navigate('HomeSecond')} style={styles.bluebtn}>
+                                <TouchableOpacity onPress={() => navigation.navigate('HomeThird')} style={styles.bluebtn}>
                                     <Text style={styles.textbtn}>RETURN TO HOME</Text>
                                 </TouchableOpacity>
                             </View>
