@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, TouchableOpacity, TextInput } from 'react-native';
+import { Text, View, StyleSheet, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import { Image } from 'react-native-elements';
 import DoctorsList from '../src/consts/DoctorsData';
 import { useNavigation } from '@react-navigation/native';
@@ -28,9 +28,11 @@ const DoctorsListPage = (props) => {
             </View>
             {/* the whole bottom section */}
             <View style={styles.bottomSection}>
+                
                 <View>
                     <Text style={styles.heading}>Specialist</Text>
                 </View>
+                <ScrollView>
                 <View style='styles.bottomContent'>
                     {
                         DoctorsList.map((item, index) => {
@@ -67,6 +69,7 @@ const DoctorsListPage = (props) => {
                         })
                     }
                 </View>
+                </ScrollView>
             </View>
         </View>
     );
@@ -112,6 +115,7 @@ const styles = StyleSheet.create({
     },
 
     bottomSection: {
+        flex : 1,
         backgroundColor: "#e6e6e6",
     },
 

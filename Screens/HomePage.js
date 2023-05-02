@@ -151,6 +151,30 @@ const HomePage = () => {
                             </View>
                         </TouchableOpacity>
                     </View>
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center' }}>
+                        <TouchableOpacity>
+                            <View style={styles.cardTopDoctor}>
+                                <View>
+                                    <Image style={styles.imageDoctors} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN3ywOYM_VL4rqLIfKeDJz0vMbZDPOP_bejA&usqp=CAU' }} />
+                                </View>
+                                <View style={styles.textDoctor}>
+                                    <Text style={styles.text1}>Dr. Taylor samaro</Text>
+                                    <Text style={styles.text2}>Dental Sargun</Text>
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                        <TouchableOpacity>
+                            <View style={styles.cardTopDoctor}>
+                                <View>
+                                    <Image style={styles.imageDoctors} source={{ uri: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7uKys2DE6zUZjLkmJY-SY9eAcasXgW5XVOg&usqp=CAU' }} />
+                                </View>
+                                <View style={styles.textDoctor}>
+                                    <Text style={styles.text1}>Dr. Iker Bureau</Text>
+                                    <Text style={styles.text2}>Dental Sargun</Text>
+                                </View>
+                            </View>
+                        </TouchableOpacity>
+                    </View>
                 </View>
             </ScrollView>
 
@@ -160,6 +184,7 @@ const HomePage = () => {
 
 const styles = StyleSheet.create({
     con: {
+        flex:1,
         backgroundColor: '#e6e6e6',
     },
 
